@@ -20,15 +20,44 @@ Download the pretrained bert model at [here](https://storage.googleapis.com/bert
 
 #### Data upload
 First, go to the [google cloud platform](https://cloud.google.com) and sign in. Create your project, and you should see this interface:
-
+<p>
+    <img src="image/1.png"/>
+</p>
 Then, click the storage button on the left bar:
-
+<p>
+    <img src="image/2.png"/>
+</p>
 Click Create bucket, then give it a name. For example the "sample_bucket_test". Make sure this name is not used by any other people. 
+<p>
+    <img src="image/3.png"/>
+</p>
 
-
+<p>
+    <img src="image/4.png"/>
+</p>
 Ok! Now it's time to upload the data (sample_text.txt) and the pretrained model from Google (multi_cased_L-12_H-768_A-12) to the bucket!
+<p>
+    <img src="image/5.png"/>
+</p>
+Click the Upload folder button, and select the folder "multi_cased_L-12_H-768_A-12" to upload the pretrained model. 
+Click the Upload files button, and select the file "sample_text.txt" to upload your data. Then you should get something like this:
+<p>
+    <img src="image/6.png"/>
+</p>
 
-Click Upload folder, and select the folder "multi_cased_L-12_H-768_A-12" to upload the pretrained model. 
+#### Create a VM & TPU
+Click the button on the right top to open the console:
+<p>
+    <img src="image/7.png"/>
+</p>
+
+
+
+
+
+
+
+
 
 
 
