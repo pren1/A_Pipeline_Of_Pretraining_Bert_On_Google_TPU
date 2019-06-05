@@ -50,6 +50,22 @@ Click the button on the right top to open the console:
 <p>
     <img src="image/7.png"/>
 </p>
+Here is something you should see:
+<p>
+    <img src="image/8.png"/>
+</p>
+Then, we are going to start the VM & TPU now! simply run the following code:
+```
+ctup up --name=test_tpu
+```
+However, if you want to use the newest tpu, you should tell google about this (Google! Give me your best V3-8 TPU!). But wait, the new GPU is more expensive (8.00$/hour). That's why I added the "--preemptible" in the following command. Basicly, it means that google can stop your training process whenever it wants. Nevertheless, it's much cheap: 2.40$/hour.
+```
+ctpu up --name=test-tpu --tpu-size=v3-8 --preemptible  
+```
+<p>
+    <img src="image/9.png"/>
+</p>
+Press "y" and "Enter" to continue. It may take a while, so just wait:
 
 
 
