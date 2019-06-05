@@ -142,7 +142,7 @@ Please, notice the usage of "gs://". It connects the google storage bucket with 
 Now, we can train the model! Run the following code:
 
 ```
-python run_pretraining.py \
+  python run_pretraining.py \
   --input_file=gs://sample_bucket_test/tmp/tf_examples.tfrecord \
   --output_dir=gs://sample_bucket_test/tmp/pretraining_output \
   --do_train=True \
@@ -154,7 +154,9 @@ python run_pretraining.py \
   --max_predictions_per_seq=20 \
   --num_train_steps=20 \
   --num_warmup_steps=10 \
-  --learning_rate=2e-5
+  --learning_rate=2e-5 \
+  --use_tpu=True \
+  --tpu_name=test-tpu
 ```
 Like this:
 
