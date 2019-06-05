@@ -1,2 +1,2 @@
-# A_Pipline_Of_Pretraining_Bert_On_Google_TPU
+# A Pipline Of Pretraining Bert On Google TPU
 A tutorial of pertaining Bert on your own dataset using google TPU
