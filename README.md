@@ -4,9 +4,9 @@ A tutorial of pertaining Bert on your own dataset using google TPU
 
 ## Introduction
 
-Bert, which is also known as the Bidirectional Encoder Representations from Transformers, is a powerful neural network model presented by Google in 2018. There exist a bunch of pre-trained models that can be fine-tuned for the downstream tasks to achieve good performances. Though the pre-trained model is good enough, you may still want to tune the pre-trained model offered by Google on your own domain-specific corpus for several additional epochs. That is, give your Bert model a chance to be familiar with the your jargons. Then we can expect better performance in the end.
+Bert, which is also known as the Bidirectional Encoder Representations from Transformers, is a powerful neural network model presented by Google in 2018. There exist a bunch of pre-trained models that can be fine-tuned for the downstream tasks to achieve good performances. Though the pre-trained model is good enough, you may still want to tune the pre-trained model offered by Google on your own domain-specific corpus for several additional epochs. That is, give your Bert model a chance to be familiar with your jargons. Then we can expect better performance in the end.
 
-Nevertheless, as I observed, such a tuning (pretraining) process is really time-consuming even on a 1080Ti GPU. The batch size is limited, and the loss decreases slowly. One promising way to solve this problem is to use TPU, which is provided in the Google Cloud Platform. From my personal experience, a V_3.8 TPU is 20~30 times faster than a 1080Ti GPU (no joking!). So, in this tutorial, We will go over the pipeline of pretraining the Bert on TPU. 
+Nevertheless, as I observed, such a tuning (pretraining) process is time-consuming even on a 1080Ti GPU. The batch size is limited, and the loss decreases slowly. One promising way to solve this problem is to use TPU, which is provided in the Google Cloud Platform. From my personal experience, a V_3.8 TPU is 20~30 times faster than a 1080Ti GPU (no joking!). So, in this tutorial, We will go over the pipeline of pretraining the Bert on TPU. 
 
 ## Pre-request
 1. A Google account
@@ -31,7 +31,7 @@ Then, click the storage button on the left bar:
     <img src="image/2.png"/>
 </p>
 
-Click Create bucket, then give it a name. For example the "sample_bucket_test". Make sure that this name is not used by any other people.
+Click Create bucket, then give it a name. For example, the "sample_bucket_test". Make sure that this name is not used by any other people.
 
 <p>
     <img src="image/3.png"/>
@@ -66,7 +66,7 @@ Here is something you should see:
     <img src="image/8.png"/>
 </p>
 
-Then, it's time to start the VM (Virtual Machine) & TPU now! simply run the following code. You can decide your TPU name by yourself. But make sure you remember it -- we are going to use it later:
+Then, it's time to start the VM (Virtual Machine) & TPU now! Simply run the following code. You can decide your TPU name by yourself. But make sure you remember it -- we are going to use it later:
 
 ```
 ctup up --name=test_tpu
@@ -101,7 +101,7 @@ Here is something I got:
 </p>
 
 ## Fetch Bert program
-Previously, we have downloaded a pretrained model. Since we would like to train the model for additional epochs, we need to get the tensorflow code. Simply run:
+Previously, we have downloaded a pre-trained model. Since we would like to train the model for additional epochs, we need to get the tensorflow code. Simply run:
 
 ```
 git clone https://github.com/google-research/bert.git
@@ -133,7 +133,7 @@ Just like this:
     <img src="image/13.png"/>
 </p>
 
-Please, notice the usage of "gs://". It connects the google storage buckets with your virtual machine. I think this is actually the most valuable part of this tutorial... Anyway, the process should finish really quickly:
+Please, notice the usage of "gs://". It connects the google storage buckets with your virtual machine. I think this is the most valuable part of this tutorial... Anyway, the process should finish quickly:
 
 <p>
     <img src="image/14.png"/>
@@ -201,7 +201,7 @@ Finally, run:
 gsutil rm -r gs://sample_bucket_test
 ```
 
-To clean up the google storage bucket. Make sure you replace "sample_bucket_test" with your own bucket name.
+To clean up the google storage bucket. Make sure you replace "sample_bucket_test" with your bucket name.
 
 Done! 
 
