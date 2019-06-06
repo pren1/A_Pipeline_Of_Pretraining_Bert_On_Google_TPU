@@ -31,7 +31,7 @@ Then, click the storage button on the left bar:
     <img src="image/2.png"/>
 </p>
 
-Click Create bucket, then give it a name. For example the "sample_bucket_test". Make sure any other people do not use this name. 
+Click Create bucket, then give it a name. For example the "sample_bucket_test". Make sure that this name is not used by any other people.
 
 <p>
     <img src="image/3.png"/>
