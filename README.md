@@ -201,25 +201,6 @@ Finally, run:
 gsutil rm -r gs://sample_bucket_test
 ```
 
-To clean up the google storage bucket. 
+To clean up the google storage bucket. Make sure you replace "sample_bucket_test" with your own bucket name.
 
 Done!
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
