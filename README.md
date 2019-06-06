@@ -4,17 +4,17 @@ A tutorial of pertaining Bert on your own dataset using google TPU
 
 ## Introduction
 
-Bert, which is also known as the Bidirectional Encoder Representations from Transformers, is a powerful neural network model presented by Google in 2018. There exist a bunch of pre-trained models that can be fine-tuned for the downstream tasks to achieve good performances. Though the pre-trained model provided by Google is good enough, you may still want to tune the pre-trained model offered by Google on your own domain-specific corpus for several additional iterations. That is, give our Bert model a chance to be familiar with the jargons on your domain, and therefore we can expect better performance on the fine-tuning process. 
+Bert, which is also known as the Bidirectional Encoder Representations from Transformers, is a powerful neural network model presented by Google in 2018. There exist a bunch of pre-trained models that can be fine-tuned for the downstream tasks to achieve good performances. Though the pre-trained model is good enough, you may still want to tune the pre-trained model offered by Google on your own domain-specific corpus for several additional epochs. That is, give your Bert model a chance to be familiar with the your jargons. Then we can expect better performance in the end.
 
-Nevertheless, as I observed, such a tuning (pretraining) process takes a long time even on a 1080Ti GPU. The batch size is limited, and the loss decreases slowly. One promising way to solve this problem is to use TPU, which is provided in the Google Cloud Platform. From my personal experience, a V3.8 TPU is 20~30 times faster than a 1080Ti GPU (no joking!). So, in this tutorial, We will go over a pipeline of pretraining the Bert on TPU. 
+Nevertheless, as I observed, such a tuning (pretraining) process is really time-consuming even on a 1080Ti GPU. The batch size is limited, and the loss decreases slowly. One promising way to solve this problem is to use TPU, which is provided in the Google Cloud Platform. From my personal experience, a V_3.8 TPU is 20~30 times faster than a 1080Ti GPU (no joking!). So, in this tutorial, We will go over the pipeline of pretraining the Bert on TPU. 
 
 ## Pre-request
 1. A Google account
-2. A bank card (No worry! Google won't charge you any money! At least this time :P)
+2. A bank card (No worry! Google won't charge you any fees! At least this time :P)
 3. Your data
 
 ## Data preparation
-Prepare your data as you are told at [here](https://github.com/google-research/bert#pre-training-with-bert). Now you should get a .txt file. This time, let's simply use the sample_text.txt, which can be downloaded from [here](https://github.com/google-research/bert.git). 
+Prepare your data as you are told at [the Bert repo](https://github.com/google-research/bert#pre-training-with-bert). After this process, you should get a .txt file. This time, let's simply use the sample_text.txt, which can be downloaded from [the Bert repo](https://github.com/google-research/bert.git). 
 
 Download the pre-trained Bert model at [here](https://storage.googleapis.com/bert_models/2018_11_23/multi_cased_L-12_H-768_A-12.zip), make sure you unzip it. Now you get a folder named "multi_cased_L-12_H-768_A-12".
 
