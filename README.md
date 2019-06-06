@@ -72,7 +72,7 @@ Then, it's time to start the VM (Virtual Machine) & TPU now! Simply run the foll
 ctup up --name=test_tpu
 ```
 
-However, if you want to use the newest TPU, you should tell Google about this (Google! Give me your best V3-8 TPU!). But wait, the new GPU is more expensive (8.00$/hour). That's why I added "--preemptible" in the following command. Basically, by adding this, Google can stop your training process whenever it wants. Nevertheless, it's much cheap: 2.40$/hour. This should not be a problem if your program saves your model frequently or if you are super lucky. 
+However, if you want to use the newest TPU, you should tell Google about this (Google! Give me your best V_3.8 TPU!). But wait, the new GPU is more expensive (8.00$/hour). That's why I added "--preemptible" in the following command. Basically, by adding this, Google can stop your training process whenever it wants. Nevertheless, it's much cheap: 2.40$/hour. This should not be a problem if your program saves your model frequently or if you are super lucky. 
 
 ```
 ctpu up --name=test-tpu --tpu-size=v3-8 --preemptible  
