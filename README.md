@@ -54,7 +54,7 @@ Click the Upload folder button, and select the folder "multi_cased_L-12_H-768_A-
 </p>
 
 ## Create a VM & TPU
-Click the button on the right top to open the console:
+Click the button on the right top to activate the cloud shell:
 
 <p>
     <img src="image/7.png"/>
@@ -66,13 +66,13 @@ Here is something you should see:
     <img src="image/8.png"/>
 </p>
 
-Then, we are going to start the VM & TPU now! simply run the following code:
+Then, it's time to start the VM (Virtual Machine) & TPU now! simply run the following code. You can decide your TPU name by yourself. But make sure you remember it -- we are going to use it later:
 
 ```
 ctup up --name=test_tpu
 ```
 
-However, if you want to use the newest Tpu, you should tell Google about this (Google! Give me your best V3-8 TPU!). But wait, the new GPU is more expensive (8.00$/hour). That's why I added the "--preemptible" in the following command. Basically, it means that Google can stop your training process whenever it wants. Nevertheless, it's much cheap: 2.40$/hour. This should not be a problem if your program saves the model frequently. 
+However, if you want to use the newest TPU, you should tell Google about this (Google! Give me your best V3-8 TPU!). But wait, the new GPU is more expensive (8.00$/hour). That's why I added "--preemptible" in the following command. Basically, by adding this, Google can stop your training process whenever it wants. Nevertheless, it's much cheap: 2.40$/hour. This should not be a problem if your program saves your model frequently or if you are super lucky. 
 
 ```
 ctpu up --name=test-tpu --tpu-size=v3-8 --preemptible  
@@ -88,7 +88,7 @@ Press "y" and "Enter" to continue. It may take a while, so just wait. By the way
     <img src="image/10.png"/>
 </p>
 
-Now, you can run to check the status of your VM and TPU:
+Now, you can run the following command to check the status of your VM and TPU:
 
 ```
 ctpu status
@@ -101,19 +101,19 @@ Here is something I got:
 </p>
 
 ## Fetch Bert program
-Previously, we have got the model. Since we would like to train the model for additional timesteps, we need to get the tensorflow code. Simply run:
+Previously, we have downloaded a pretrained model. Since we would like to train the model for additional epochs, we need to get the tensorflow code. Simply run:
 
 ```
 git clone https://github.com/google-research/bert.git
 ```
 
-You should see a folder named Bert under your root directory:
+You should see a folder named Bert under your current directory:
 
 <p>
     <img src="image/12.png"/>
 </p>
 
-We are almost there! Enter the folder "Bert", and run the following code to generate the data in tensorflow style:
+We are almost there! Enter the folder "Bert", and run the following code to process the data. A file named tf_examples.tfrecord can be found under the "tmp" folder:
 
 ```
 python create_pretraining_data.py \
@@ -133,13 +133,13 @@ Just like this:
     <img src="image/13.png"/>
 </p>
 
-Please, notice the usage of "gs://". It connects the google storage bucket with your virtual machine. I think this is actually the most valuable part of this tutorial... Anyway, the process should finish really quickly:
+Please, notice the usage of "gs://". It connects the google storage buckets with your virtual machine. I think this is actually the most valuable part of this tutorial... Anyway, the process should finish really quickly:
 
 <p>
     <img src="image/14.png"/>
 </p>
 
-Now, we can train the model! Run the following code. Notice that the tpu_name is set to the name you gave to the TPU previously:
+Now, it's time to train the model! Run the following code. Notice that the tpu_name is set to the name you gave to the TPU previously:
 
 ```
   python run_pretraining.py \
@@ -189,7 +189,7 @@ After that, run
 ```
 ctpu status
 ```
-To make sure you have stopped the VM and the TPU:
+To make sure that you have stopped the VM and the TPU. You should see something like this:
 
 <p>
     <img src="image/18.png"/>
