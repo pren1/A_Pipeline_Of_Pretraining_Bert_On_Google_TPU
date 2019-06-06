@@ -1,25 +1,25 @@
-# A Pipline Of Pretraining Bert On Google TPU
+# A Pipeline Of Pretraining Bert On Google TPU
 
 A tutorial of pertaining Bert on your own dataset using google TPU
 
 ## Introduction
 
-Bert, which is also known as Bidirectional Encoder Representations from Transformers, is a powerful nerual network model presented by Google in 2018. There exist a bunch of pretrained models that can be fine tuned for the downstreaming tasks to achieve good performances. Though the pretrained model provided by Google is good enough, you may still want to tune the pretrained model provided by Google on your own domain-specific corpus for several additional iterations. That is, give our bert model a chance to be farimiliar with the jargons on your domain, and therefore we can expect better performance on the fine-tune process. 
+Bert, which is also known as the Bidirectional Encoder Representations from Transformers, is a powerful neural network model presented by Google in 2018. There exist a bunch of pre-trained models that can be fine-tuned for the downstream tasks to achieve good performances. Though the pre-trained model provided by Google is good enough, you may still want to tune the pre-trained model offered by Google on your own domain-specific corpus for several additional iterations. That is, give our Bert model a chance to be familiar with the jargons on your domain, and therefore we can expect better performance on the fine-tuning process. 
 
-Nevertheless, as I observed, such a tuning (pretraining) process really takes a long time even on a 1080Ti GPU. The batchsize is limited, and the loss decreases really slow. One promising way to solve this problem is to use TPU, which is provided in Google Cloud Platform. From my personal experience, a V3.8 TPU is 20~30 times faster than a 1080Ti GPU (no joking!). So, in this tutorial, We will go over a pipline of pretraining the Bert on TPU. 
+Nevertheless, as I observed, such a tuning (pretraining) process takes a long time even on a 1080Ti GPU. The batch size is limited, and the loss decreases slowly. One promising way to solve this problem is to use TPU, which is provided in the Google Cloud Platform. From my personal experience, a V3.8 TPU is 20~30 times faster than a 1080Ti GPU (no joking!). So, in this tutorial, We will go over a pipeline of pretraining the Bert on TPU. 
 
-## Prerequest
+## Pre-request
 1. A Google account
 2. A bank card (No worry! Google won't charge you any money! At least this time :P)
 3. Your data
 
 ## Data preparation
-Prepare your data as your are told at [here](https://github.com/google-research/bert#pre-training-with-bert). Now you should get a .txt file. This time, let's simply use the sample_text.txt, which can be downloaded from [here](https://github.com/google-research/bert.git). 
+Prepare your data as you are told at [here](https://github.com/google-research/bert#pre-training-with-bert). Now you should get a .txt file. This time, let's simply use the sample_text.txt, which can be downloaded from [here](https://github.com/google-research/bert.git). 
 
-Download the pretrained bert model at [here](https://storage.googleapis.com/bert_models/2018_11_23/multi_cased_L-12_H-768_A-12.zip), make sure you unzip it. Now you get a folder named "multi_cased_L-12_H-768_A-12".
+Download the pre-trained Bert model at [here](https://storage.googleapis.com/bert_models/2018_11_23/multi_cased_L-12_H-768_A-12.zip), make sure you unzip it. Now you get a folder named "multi_cased_L-12_H-768_A-12".
 
 ## Data upload
-First, go to the [google cloud platform](https://cloud.google.com) and sign in. Create your project, and you should see this interface:
+First, go to the [Google cloud platform](https://cloud.google.com) and sign in. Create your project, and you should see this interface:
 
 <p>
     <img src="image/1.png"/>
@@ -31,7 +31,7 @@ Then, click the storage button on the left bar:
     <img src="image/2.png"/>
 </p>
 
-Click Create bucket, then give it a name. For example the "sample_bucket_test". Make sure this name is not used by any other people. 
+Click Create bucket, then give it a name. For example the "sample_bucket_test". Make sure any other people do not use this name. 
 
 <p>
     <img src="image/3.png"/>
@@ -41,13 +41,13 @@ Click Create bucket, then give it a name. For example the "sample_bucket_test". 
     <img src="image/4.png"/>
 </p>
 
-Ok! Now it's time to upload the data (sample_text.txt) and the pretrained model from Google (multi_cased_L-12_H-768_A-12) to the bucket!
+Ok! Now it's time to upload the data (sample_text.txt) and the pre-trained model from Google (multi_cased_L-12_H-768_A-12) to the bucket!
 
 <p>
     <img src="image/5.png"/>
 </p>
 
-Click the Upload folder button, and select the folder "multi_cased_L-12_H-768_A-12" to upload the pretrained model. Click the Upload files button, and select the file "sample_text.txt" to upload your data. Then you should get something like this:
+Click the Upload folder button, and select the folder "multi_cased_L-12_H-768_A-12" to upload the pre-trained model. Click the Upload files button, and select the file "sample_text.txt" to upload your data. Then you should get something like this:
 
 <p>
     <img src="image/6.png"/>
@@ -72,7 +72,7 @@ Then, we are going to start the VM & TPU now! simply run the following code:
 ctup up --name=test_tpu
 ```
 
-However, if you want to use the newest tpu, you should tell google about this (Google! Give me your best V3-8 TPU!). But wait, the new GPU is more expensive (8.00$/hour). That's why I added the "--preemptible" in the following command. Basicly, it means that google can stop your training process whenever it wants. Nevertheless, it's much cheap: 2.40$/hour. This should not be a problem if your program save the model frequently. 
+However, if you want to use the newest Tpu, you should tell Google about this (Google! Give me your best V3-8 TPU!). But wait, the new GPU is more expensive (8.00$/hour). That's why I added the "--preemptible" in the following command. Basically, it means that Google can stop your training process whenever it wants. Nevertheless, it's much cheap: 2.40$/hour. This should not be a problem if your program saves the model frequently. 
 
 ```
 ctpu up --name=test-tpu --tpu-size=v3-8 --preemptible  
@@ -100,20 +100,20 @@ Here is something I got:
     <img src="image/11.png"/>
 </p>
 
-## Fetch bert program
-Previously, we have got the model. Since we would like to train the model for an additional timesteps, we need to get the tensorflow code. Simply run:
+## Fetch Bert program
+Previously, we have got the model. Since we would like to train the model for additional timesteps, we need to get the tensorflow code. Simply run:
 
 ```
 git clone https://github.com/google-research/bert.git
 ```
 
-You should see a folder named bert under your root directory:
+You should see a folder named Bert under your root directory:
 
 <p>
     <img src="image/12.png"/>
 </p>
 
-We are almost there! Enter the folder "bert", and run the following code to generate the data in tensorflow style:
+We are almost there! Enter the folder "Bert", and run the following code to generate the data in tensorflow style:
 
 ```
 python create_pretraining_data.py \
@@ -133,7 +133,7 @@ Just like this:
     <img src="image/13.png"/>
 </p>
 
-Please, notice the usage of "gs://". It connects the google storage bucket with your virtual machine. I think this is actually the most valuable part of this tutorail... Anyway, the process should finish really quickly:
+Please, notice the usage of "gs://". It connects the google storage bucket with your virtual machine. I think this is actually the most valuable part of this tutorial... Anyway, the process should finish really quickly:
 
 <p>
     <img src="image/14.png"/>
@@ -189,7 +189,7 @@ After that, run
 ```
 ctpu status
 ```
-To make sure you have stop the VM and the TPU:
+To make sure you have stopped the VM and the TPU:
 
 <p>
     <img src="image/18.png"/>
