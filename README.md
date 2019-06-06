@@ -133,7 +133,7 @@ Just like this:
     <img src="image/13.png"/>
 </p>
 
-Please, notice the usage of "gs://". It connects the google storage buckets with your virtual machine. I think this is the most valuable part of this tutorial... Anyway, the process should finish quickly:
+Please, notice the usage of "gs://". It connects the google storage buckets with your virtual machine. I think this is the most valuable part in this tutorial... Anyway, the process should be finished quickly:
 
 <p>
     <img src="image/14.png"/>
