@@ -6,7 +6,7 @@ A tutorial of pertaining Bert on your own dataset using google TPU
 
 Bert, which is also known as Bidirectional Encoder Representations from Transformers, is a powerful nerual network model presented by Google in 2018. There exist a bunch of pretrained models that can be fine tuned for the downstreaming tasks to achieve good performances. Though the pretrained model provided by Google is good enough, you may still want to tune the pretrained model provided by Google on your own domain-specific corpus for several additional iterations. That is, give our bert model a chance to be farimiliar with the jargons on your domain, and therefore we can expect better performance on the fine-tune process. 
 
-Nevertheless, as I observed, such a tuning (pretraining) process really takes a long time even on a 1080Ti GPU. The batchsize is limited, and the loss decreases really slow. One promising way to solve this problem is to use TPU, which is provided in Google Cloud Platform. So, in this tutorial, We will go over a pipline of pretraining the Bert on TPU. 
+Nevertheless, as I observed, such a tuning (pretraining) process really takes a long time even on a 1080Ti GPU. The batchsize is limited, and the loss decreases really slow. One promising way to solve this problem is to use TPU, which is provided in Google Cloud Platform. From my personal experience, a V3.8 TPU is 20~30 times faster than a 1080Ti GPU (no joking!). So, in this tutorial, We will go over a pipline of pretraining the Bert on TPU. 
 
 ## Prerequest
 1. A Google account
@@ -179,21 +179,31 @@ exit
 ```
 To log out the VM
 
-<p>
-    <img src="image/17.png"/>
-</p>
-
 Run:
 ```
 ctpu delete --name=test-tpu
 ```
 To delete your TPU
 
+After that, run
+```
+ctpu status
+```
+To make sure you have stop the VM and the TPU:
+
 <p>
     <img src="image/18.png"/>
 </p>
 
+Finally, run:
 
+```
+gsutil rm -r gs://sample_bucket_test
+```
+
+To clean up the google storage bucket. 
+
+Done!
 
 
 
