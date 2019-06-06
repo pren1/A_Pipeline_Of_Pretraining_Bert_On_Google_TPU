@@ -113,7 +113,7 @@ You should see a folder named Bert under your current directory:
     <img src="image/12.png"/>
 </p>
 
-We are almost there! Enter the folder "Bert", and run the following code to process the data. A file named tf_examples.tfrecord can be found under the "tmp" folder:
+We are almost there! Enter the folder "Bert", and run the following code to process the data. A file named tf_examples.tfrecord can be found under the "tmp" folder after this process:
 
 ```
 python create_pretraining_data.py \
