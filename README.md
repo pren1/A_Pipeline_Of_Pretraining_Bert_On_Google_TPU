@@ -139,7 +139,7 @@ Please, notice the usage of "gs://". It connects the google storage bucket with 
     <img src="image/14.png"/>
 </p>
 
-Now, we can train the model! Run the following code:
+Now, we can train the model! Run the following code. Notice that the tpu_name is set to the name you gave to the TPU previously:
 
 ```
   python run_pretraining.py \
@@ -170,7 +170,30 @@ After a while, you can see the following result:
     <img src="image/16.png"/>
 </p>
 
-Bravo! You did it!
+🎉 Bravo! You did it! 🎉
+
+## battlefield cleanup
+Run: 
+```
+exit
+```
+To log out the VM
+
+<p>
+    <img src="image/17.png"/>
+</p>
+
+Run:
+```
+ctpu delete --name=test-tpu
+```
+To delete your TPU
+
+<p>
+    <img src="image/18.png"/>
+</p>
+
+
 
 
 
