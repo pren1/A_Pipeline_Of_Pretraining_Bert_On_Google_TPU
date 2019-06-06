@@ -172,7 +172,7 @@ After a while, you can see the following result:
 
 🎉 Bravo! You did it! 🎉
 
-## battlefield cleanup
+## Battlefield Cleanup
 Run: 
 ```
 exit
@@ -203,4 +203,8 @@ gsutil rm -r gs://sample_bucket_test
 
 To clean up the google storage bucket. Make sure you replace "sample_bucket_test" with your own bucket name.
 
-Done!
+Done! 
+
+Personally speaking, I never use TPU before, and I spent several hours on solving various problems I met. I hope this tutorial can help anyone who wants to pretrain the Bert using TPU. 
+
+Thank you for your reading and have a nice day 😄!
